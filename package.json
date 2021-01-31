@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "dev": "NODE_ENV=development nodemon ./src/app.js",
+    "start": "node ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -13,10 +14,6 @@
   },
   "author": "dsmyda",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dsmyda/express-template/issues"
-  },
-  "homepage": "https://github.com/dsmyda/express-template#readme",
   "devDependencies": {
     "babel": "^6.23.0",
     "mocha": "^8.2.1",
