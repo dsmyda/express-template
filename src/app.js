@@ -3,7 +3,7 @@ import bunyan from 'bunyan'
 import bodyParser from 'body-parser'
 import path from 'path'
 import compression from 'compression'
-import routes from './routes'
+import apiRouter from './api'
 
 const log = bunyan.createLogger({name: "express-template"})
 
@@ -13,7 +13,7 @@ app.use(compression())
 app.use(bodyParser.json())
 app.use(express.static(path.join(path.resolve(), 'public')))
 
-app.use(routes)
+app.use(apiRouter)
 
 const isProduction = process.env.NODE_ENV === 'production'
 
