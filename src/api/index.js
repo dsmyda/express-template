@@ -1,8 +1,8 @@
 import express from 'express'
-import users from './users'
+import exampleApi from './example'
 
 const apiRouter = express.Router()
-apiRouter.use('/users', users)
+apiRouter.use('/examples', exampleApi)
 // Define other routes here
 
 const topLevelRouter = express.Router()
