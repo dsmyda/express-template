@@ -1,7 +1,6 @@
 const express = require("express"),
       bunyan = require('bunyan'),
       compression = require('compression'),
-      axios = require('axios'),
       bodyParser = require('body-parser'),
       log = bunyan.createLogger({name: "express-template"}),
       path = require('path')
