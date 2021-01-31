@@ -1,16 +1,19 @@
-const express = require("express"),
-      bunyan = require('bunyan'),
-      compression = require('compression'),
-      bodyParser = require('body-parser'),
-      log = bunyan.createLogger({name: "express-template"}),
-      path = require('path')
+import express from 'express';
+import bunyan from 'bunyan'
+import bodyParser from 'body-parser'
+import path from 'path'
+import compression from 'compression'
+import routes from './routes'
+
+const log = bunyan.createLogger({name: "express-template"})
 
 const app = express()
+
 app.use(compression())
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, '..', 'public')))
+app.use(express.static(path.join(path.resolve(), 'public')))
 
-// Define routes here
+app.use(routes)
 
 const isProduction = process.env.NODE_ENV === 'production'
 
