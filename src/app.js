@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import path from 'path'
 import compression from 'compression'
 import apiRouter from './api'
+import mongoose from 'mongoose'
 
 const log = bunyan.createLogger({name: "express-template"})
 
@@ -12,15 +13,15 @@ const app = express()
 app.use(compression())
 app.use(bodyParser.json())
 app.use(express.static(path.join(path.resolve(), 'public')))
-
 app.use(apiRouter)
 
 const isProduction = process.env.NODE_ENV === 'production'
 
 if (isProduction) {
-  // connect to production services
+  mongoose.connect(process.env.MONGODB_URI);
 } else {
-  // connect to localhost services
+  mongoose.connect('mongodb://localhost/dev', {useNewUrlParser: true, useUnifiedTopology: true})
+  mongoose.set('debug', true);
 }
 
 // Prevent leaking stack traces to user.
