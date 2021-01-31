@@ -3,13 +3,13 @@ const express = require("express"),
       compression = require('compression'),
       axios = require('axios'),
       bodyParser = require('body-parser'),
-      log = bunyan.createLogger({name: "myapp"})
+      log = bunyan.createLogger({name: "myapp"}),
+      path = require('path')
 
 const app = express()
 app.use(compression())
 app.use(bodyParser.json())
-app.use(express.static(__dirname + '/public'));
-
+app.use(express.static(path.join(__dirname, '..', 'public')))
 const isProduction = process.env.NODE_ENV === 'production'
 
 // Define routes here
